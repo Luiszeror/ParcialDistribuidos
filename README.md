@@ -8,7 +8,7 @@
 
 ---
 
-## 🐳 Imagen Docker
+## Imagen Docker
 
 La imagen se encuentra publicada en DockerHub:
 
@@ -16,7 +16,7 @@ La imagen se encuentra publicada en DockerHub:
 
 ---
 
-## ⚙️ Instrucciones para ejecutar
+## ⚙Instrucciones para ejecutar
 
 La imagen del proyecto se encuentra publicada en el repositorio de Docker Hub en la siguiente dirección:
 
@@ -27,9 +27,9 @@ https://hub.docker.com/r/luizeror/album-app
 ---
 Este repositorio contiene la versión más reciente etiquetada como latest.
 ---
-## 🚀 Instrucciones para construir y ejecutar la imagen
+##  Instrucciones para construir y ejecutar la imagen
 
-### ✅ Opción 1: Ejecutar la imagen directamente desde DockerHub
+### Opción 1: Ejecutar la imagen directamente desde DockerHub
 
 ```bash
 docker pull luizeror/album-app
@@ -41,14 +41,14 @@ Después de ejecutar el contenedor, accede a la aplicación desde tu navegador:
 http://localhost:3000
 
 ---
-## 🛠Opción 2: Construir la imagen localmente desde el proyecto
+## Opción 2: Construir la imagen localmente desde el proyecto
 
 Siga estos pasos para construir y ejecutar la imagen Docker localmente:
 
 1. Clona este repositorio:
 
 ```bash
-git clone <URL-del-repositorio>
+git clone https://github.com/Luiszeror/ParcialDistribuidos.git
 cd albumApp
 ```
 Construye la imagen usando Docker
