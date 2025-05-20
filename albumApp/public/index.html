@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Álbumes JSONPlaceholder</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .album { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+    input, button { padding: 8px; margin: 5px 0; }
+  </style>
+</head>
+<body>
+
+  <h1>Álbumes desde JSONPlaceholder</h1>
+
+  <h2>Todos los álbumes</h2>
+  <button onclick="cargarAlbums()">Cargar todos</button>
+  <div id="todos"></div>
+
+  <h2>Buscar álbum por ID</h2>
+  <input type="number" id="albumId" placeholder="Ingrese ID del álbum">
+  <button onclick="buscarAlbum()">Buscar</button>
+  <div id="resultado"></div>
+
+  <script>
+    // Obtener todos los álbumes
+    function cargarAlbums() {
+      fetch('https://jsonplaceholder.typicode.com/albums')
+        .then(response => response.json())
+        .then(albums => {
+          const contenedor = document.getElementById('todos');
+          contenedor.innerHTML = '';
+          albums.forEach(album => {
+            contenedor.innerHTML += `
+              <div class="album">
+                <strong>ID:</strong> ${album.id}<br>
+                <strong>Título:</strong> ${album.title}<br>
+                <strong>UserID:</strong> ${album.userId}
+              </div>`;
+          });
+        });
+    }
+
+    // Buscar álbum por ID
+    function buscarAlbum() {
+      const id = document.getElementById('albumId').value;
+      if (!id) return alert('Ingresa un ID válido');
+
+      fetch(`https://jsonplaceholder.typicode.com/albums/${id}`)
+        .then(response => {
+          if (!response.ok) throw new Error('Álbum no encontrado');
+          return response.json();
+        })
+        .then(album => {
+          const res = document.getElementById('resultado');
+          res.innerHTML = `
+            <div class="album">
+              <strong>ID:</strong> ${album.id}<br>
+              <strong>Título:</strong> ${album.title}<br>
+              <strong>UserID:</strong> ${album.userId}
+            </div>`;
+        })
+        .catch(error => {
+          document.getElementById('resultado').innerHTML = `<p style="color:red;">${error.message}</p>`;
+        });
+    }
+  </script>
+
+</body>
+</html>
